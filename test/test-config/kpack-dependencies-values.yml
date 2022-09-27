@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kpack-dependencies-values
+  namespace: carvel-test
+stringData:
+  values.yaml: |
+    kp_default_repository: ghcr.io/arktonix/kpack-build

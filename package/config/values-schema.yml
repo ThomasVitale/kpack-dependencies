@@ -1,0 +1,5 @@
+#@data/values-schema
+---
+
+#@schema/desc "The OCI registry where to publish builder images. The same as configured in kpack."
+kp_default_repository: ""

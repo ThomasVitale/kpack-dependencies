@@ -1,0 +1,66 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: kpack-dependencies.packages.kadras.io.0.0.0
+spec:
+  refName: kpack-dependencies.packages.kadras.io
+  releasedAt: null
+  template:
+    spec:
+      deploy:
+      - kapp: {}
+      fetch:
+      - git: {}
+      template:
+      - ytt:
+          paths:
+          - config
+      - kbld: {}
+  valuesSchema:
+    openAPIv3:
+      additionalProperties: false
+      properties:
+        kp_default_repository:
+          default: ""
+          description: The OCI registry where to publish builder images. The same
+            as configured in kpack.
+          type: string
+  version: 0.0.0
+
+---
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: PackageMetadata
+metadata:
+  creationTimestamp: null
+  name: kpack-dependencies.packages.kadras.io
+spec:
+  categories:
+  - build
+  displayName: kpack-dependencies
+  longDescription: A set of buildpacks, stacks, and builders to use with kpack, a
+    Kubernetes-native implementation of Cloud Native Buildpacks. It supports multiple
+    languages and frameworks.
+  maintainers:
+  - name: Thomas Vitale
+  providerName: Arktonix
+  shortDescription: A set of buildpacks, stacks, and builders to use with kpack.
+
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  annotations:
+    kctrl.carvel.dev/local-fetch-0: .
+  creationTimestamp: null
+  name: kpack-dependencies
+spec:
+  packageRef:
+    refName: kpack-dependencies.packages.kadras.io
+    versionSelection:
+      constraints: 0.0.0
+  serviceAccountName: kadras-install-sa
+status:
+  conditions: null
+  friendlyDescription: ""
+  observedGeneration: 0
