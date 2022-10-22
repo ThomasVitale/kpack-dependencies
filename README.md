@@ -90,7 +90,7 @@ For documentation specific to kpack, check out [https://github.com/pivotal/kpack
 
 ## References
 
-This package is inspired by the [Kpack Dependencies](https://github.com/vmware-tanzu/package-for-kpack-dependencies) package used in Tanzu Community Edition, but not supported anymore.
+This package is inspired by the [Kpack Dependencies](https://github.com/vmware-tanzu/package-for-kpack-dependencies) package used in Tanzu Community Edition before its retirement.
 
 ## Supply Chain Security
 
