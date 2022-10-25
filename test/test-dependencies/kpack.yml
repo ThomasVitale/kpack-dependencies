@@ -12,7 +12,7 @@ spec:
   packageRef:
     refName: kpack.packages.kadras.io
     versionSelection:
-      constraints: 0.6.1
+      constraints: 0.7.1
   values:
     - secretRef:
         name: kpack-values

@@ -44,7 +44,7 @@ Either way, you can then install the Kpack Dependencies package using [`kctrl`](
 ```shell
 kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.1.0 \
+    -v 0.2.0 \
     -n carvel-packages
 ```
 
@@ -79,18 +79,18 @@ Then, reference it from the `kctrl` command when installing or upgrading the pac
 ```shell
 kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.1.0 \
+    -v 0.2.0 \
     -n carvel-packages \
     --values-file values.yml
 ```
 
 ## Documentation
 
-For documentation specific to kpack, check out [https://github.com/pivotal/kpack](https://github.com/pivotal/kpack).
+For documentation specific to kpack, check out [github.com/pivotal/kpack](https://github.com/pivotal/kpack).
 
 ## References
 
-This package is inspired by the [Kpack Dependencies](https://github.com/vmware-tanzu/package-for-kpack-dependencies) package used in Tanzu Community Edition before its retirement.
+This package is based on the original kpack-dependencies package used in [Tanzu Community Edition](https://github.com/vmware-tanzu/community-edition) before its retirement.
 
 ## Supply Chain Security
 

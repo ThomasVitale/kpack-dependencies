@@ -6,11 +6,11 @@ metadata:
   name: default
 spec:
   sources:
-    - image: gcr.io/paketo-buildpacks/java:7.4.0
-    - image: gcr.io/paketo-buildpacks/java-native-image:7.32.0
-    - image: gcr.io/paketo-buildpacks/go:3.0.1
-    - image: gcr.io/paketo-buildpacks/python:2.2.0
-    - image: gcr.io/paketo-buildpacks/nodejs:0.11.0
-    - image: gcr.io/paketo-buildpacks/nginx:0.11.0
+    - image: gcr.io/paketo-buildpacks/java:7.8.0
+    - image: gcr.io/paketo-buildpacks/java-native-image:7.36.0
     - image: gcr.io/paketo-buildpacks/procfile:5.4.0
-    - image: gcr.io/paketo-buildpacks/dotnet-core:0.23.2
+    - image: gcr.io/paketo-buildpacks/go:3.0.2
+    - image: gcr.io/paketo-buildpacks/python:2.3.0
+    - image: gcr.io/paketo-buildpacks/nodejs:0.26.0
+    - image: gcr.io/paketo-buildpacks/nginx:0.12.0
+    - image: gcr.io/paketo-buildpacks/dotnet-core:0.23.6
