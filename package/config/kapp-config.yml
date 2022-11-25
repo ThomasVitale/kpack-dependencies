@@ -1,12 +1,20 @@
+#@ load("@ytt:data", "data")
+
 ---
 apiVersion: kapp.k14s.io/v1alpha1
 kind: Config
-minimumRequiredVersion: 0.29.0
+
+minimumRequiredVersion: 0.50.0
+
+#! Wait rules explicitly define how kapp should wait for resources that kapp does not wait for by default.
+#! See: https://carvel.dev/kapp/docs/latest/config/#waitrules.
 waitRules:
-  - supportsObservedGeneration: true
-    conditionMatchers:
-      - type: Ready
-        status: "True"
-        success: true
-    resourceMatchers:
-      - apiVersionKindMatcher: { apiVersion: kpack.io/v1alpha2, kind: ClusterBuilder }
+
+#! Specify the condition indicating success for CluserBuilders.
+- supportsObservedGeneration: true
+  conditionMatchers:
+    - type: Ready
+      status: "True"
+      success: true
+  resourceMatchers:
+    - apiVersionKindMatcher: { apiVersion: kpack.io/v1alpha2, kind: ClusterBuilder }

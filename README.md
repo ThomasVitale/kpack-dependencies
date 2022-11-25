@@ -44,7 +44,7 @@ Either way, you can then install the Kpack Dependencies package using [`kctrl`](
 ```shell
 kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.3.0 \
+    -v 0.3.1 \
     -n carvel-packages
 ```
 
@@ -79,7 +79,7 @@ Then, reference it from the `kctrl` command when installing or upgrading the pac
 ```shell
 kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.3.0 \
+    -v 0.3.1 \
     -n carvel-packages \
     --values-file values.yml
 ```
