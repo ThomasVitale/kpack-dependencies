@@ -6,4 +6,4 @@ metadata:
   namespace: carvel-test
 stringData:
   values.yaml: |
-    kp_default_repository: ghcr.io/arktonix/kpack-build
+    kp_default_repository: ghcr.io/kadras.io/kpack-build
