@@ -19,7 +19,7 @@ spec:
           - kbld: {}
       export:
       - imgpkgBundle:
-          image: ghcr.io/arktonix/kpack-dependencies
+          image: ghcr.io/kadras-io/kpack-dependencies
           useKbldImagesLock: true
         includePaths:
         - config
