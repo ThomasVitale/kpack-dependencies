@@ -19,9 +19,9 @@ metadata:
 spec:
   id: "io.buildpacks.stacks.bionic"
   buildImage:
-    image: paketobuildpacks/build-bionic-base:1.2.45
+    image: paketobuildpacks/build-bionic-base:1.2.57
   runImage:
-    image: paketobuildpacks/run-bionic-base:1.2.45
+    image: paketobuildpacks/run-bionic-base:1.2.57
 
 ---
 apiVersion: kpack.io/v1alpha2
@@ -31,6 +31,6 @@ metadata:
 spec:
   id: "io.buildpacks.stacks.bionic"
   buildImage:
-    image: paketobuildpacks/build-bionic-base:1.2.45
+    image: paketobuildpacks/build-bionic-base:1.2.57
   runImage:
-    image: paketobuildpacks/run-bionic-base:1.2.45
+    image: paketobuildpacks/run-bionic-base:1.2.57

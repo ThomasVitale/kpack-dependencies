@@ -34,7 +34,7 @@ Then, install the Kpack Dependencies package.
   ```shell
   kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.3.3 \
+    -v 0.3.4 \
     -n kadras-packages
   ```
 
@@ -73,7 +73,7 @@ Then, reference it from the `kctrl` command when installing or upgrading the pac
   ```shell
   kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.3.3 \
+    -v 0.3.4 \
     -n kadras-packages \
     --values-file values.yml
   ```
