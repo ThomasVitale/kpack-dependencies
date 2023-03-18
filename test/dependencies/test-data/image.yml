@@ -1,0 +1,18 @@
+apiVersion: kpack.io/v1alpha2
+kind: Image
+metadata:
+  name: test-image
+  namespace: tests
+spec:
+  tag: ghcr.io/kadras-io/kpack-test-image
+  builder:
+    name: jammy-tiny
+    kind: ClusterBuilder
+  source:
+    git:
+      url: https://github.com/ThomasVitale/band-service
+      revision: e327626f4d16e07594f7acb9a4251ff977165f7b
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"

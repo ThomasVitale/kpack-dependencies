@@ -1,8 +1,18 @@
 # Kpack Dependencies
 
-This project provides a [Carvel package](https://carvel.dev/kapp-controller/docs/latest/packaging) with a set of buildpacks, stacks, and builders to use with [kpack](https://github.com/pivotal/kpack), a Kubernetes-native implementation of [Cloud Native Buildpacks](https://buildpacks.io). It relies on the [Paketo Buildpacks](https://paketo.io), which provide support for multiple languages and frameworks, including Java, Spring, GraalVM, Go, Python, NodeJs, and more.
+![Test Workflow](https://github.com/kadras-io/kpack-dependencies/actions/workflows/test.yml/badge.svg)
+![Release Workflow](https://github.com/kadras-io/kpack-dependencies/actions/workflows/release.yml/badge.svg)
+[![The SLSA Level 3 badge](https://slsa.dev/images/gh-badge-level3.svg)](https://slsa.dev/spec/v0.1/levels)
+[![The Apache 2.0 license badge](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Follow us on Twitter](https://img.shields.io/static/v1?label=Twitter&message=Follow&color=1DA1F2)](https://twitter.com/kadrasIO)
 
-## Prerequisites
+A Carvel package providing a set of buildpacks, stacks, and builders to use with [kpack](https://github.com/kadras-io/package-for-kpack), a Kubernetes-native implementation of [Cloud Native Buildpacks](https://buildpacks.io) to build application source code into OCI images.
+
+This package relies on the [Paketo Buildpacks](https://paketo.io) implementation, which provide support for multiple languages and frameworks, including Java, Spring, GraalVM, Go, Python, NodeJs, and more.
+
+## 🚀&nbsp; Getting Started
+
+### Prerequisites
 
 * Kubernetes 1.24+
 * Carvel [`kctrl`](https://carvel.dev/kapp-controller/docs/latest/install/#installing-kapp-controller-cli-kctrl) CLI.
@@ -10,113 +20,101 @@ This project provides a [Carvel package](https://carvel.dev/kapp-controller/docs
 
   ```shell
   kapp deploy -a kapp-controller -y \
-    -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/latest/download/release.yml
+    -f https://github.com/carvel-dev/kapp-controller/releases/latest/download/release.yml
   ```
 
-## Dependencies
+### Dependencies
 
-Kpack Dependencies requires the Kpack package to be already installed in the cluster. You can install it
-from the [Kadras package repository](https://github.com/kadras-io/kadras-packages).
+Kpack Dependencies requires the [kpack](https://github.com/kadras-io/package-for-kpack) package. You can install it from the [Kadras package repository](https://github.com/kadras-io/kadras-packages).
 
-## Installation
+### Installation
 
-First, add the [Kadras package repository](https://github.com/kadras-io/kadras-packages) to your Kubernetes cluster.
+Add the Kadras [package repository](https://github.com/kadras-io/kadras-packages) to your Kubernetes cluster:
 
   ```shell
   kubectl create namespace kadras-packages
-  kctrl package repository add -r kadras-repo \
+  kctrl package repository add -r kadras-packages \
     --url ghcr.io/kadras-io/kadras-packages \
     -n kadras-packages
   ```
 
-Then, install the Kpack Dependencies package.
+<details><summary>Installation without package repository</summary>
+The recommended way of installing the kpack-dependencies package is via the Kadras <a href="https://github.com/kadras-io/kadras-packages">package repository</a>. If you prefer not using the repository, you can add the package definition directly using <a href="https://carvel.dev/kapp/docs/latest/install"><code>kapp</code></a> or <code>kubectl</code>.
+
+  ```shell
+  kubectl create namespace kadras-packages
+  kapp deploy -a kpack-package -n kadras-packages -y \
+    -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/metadata.yml \
+    -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/package.yml
+  ```
+</details>
+
+Install the Kpack Dependencies package:
 
   ```shell
   kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.3.4 \
+    -v ${VERSION} \
     -n kadras-packages
   ```
 
-### Verification
+> **Note**
+> You can find the `${VERSION}` value by retrieving the list of package versions available in the Kadras package repository installed on your cluster.
+> 
+>   ```shell
+>   kctrl package available list -p kpack-dependencies.packages.kadras.io -n kadras-packages
+>   ```
 
-You can verify the list of installed Carvel packages and their status.
+Verify the installed packages and their status:
 
   ```shell
   kctrl package installed list -n kadras-packages
   ```
 
-### Version
+## 📙&nbsp; Documentation
 
-You can get the list of Kpack Dependencies versions available in the Kadras package repository.
+Documentation, tutorials and examples for this package are available in the [docs](docs) folder.
+For documentation specific to kpack, check out [github.com/pivotal/kpack](https://github.com/pivotal/kpack).
 
-  ```shell
-  kctrl package available list -p kpack-dependencies.packages.kadras.io -n kadras-packages
-  ```
+## 🎯&nbsp; Configuration
 
-## Configuration
-
-The Kpack Dependencies package has the following configurable properties.
-
-| Config | Default | Description |
-|-------|-------------------|-------------|
-| `kp_default_repository` | `""` | The OCI registry where to publish builder images. The same as configured in kpack. **Required**. |
-
-You can define your configuration in a `values.yml` file.
+The Kpack Dependencies package can be customized via a `values.yml` file.
 
   ```yaml
-  kp_default_repository: ghcr.io/kadras-io/kpack-build
+  kp_default_repository:
+    name: ghcr.io/thomasvitale/kpack
   ```
 
-Then, reference it from the `kctrl` command when installing or upgrading the package.
+Reference the `values.yml` file from the `kctrl` command when installing or upgrading the package.
 
   ```shell
   kctrl package install -i kpack-dependencies \
     -p kpack-dependencies.packages.kadras.io \
-    -v 0.3.4 \
+    -v ${VERSION} \
     -n kadras-packages \
     --values-file values.yml
   ```
 
-## Upgrading
+### Values
 
-You can upgrade an existing package to a newer version using `kctrl`.
+The Kpack Dependencies package has the following configurable properties.
 
-  ```shell
-  kctrl package installed update -i kpack-dependencies \
-    -v <new-version> \
-    -n kadras-packages
-  ```
+<details><summary>Configurable properties</summary>
 
-You can also update an existing package with a newer `values.yml` file.
+| Config | Default | Description |
+|-------|-------------------|-------------|
+| `kp_default_repository.name` | `""` | The default repository to use for builder images and dependencies. For example, GitHub Container Registry: `ghcr.io/my-org/my-repo`; GCR: `gcr.io/my-project/my-repo`; Harbor: `myharbor.io/my-project/my-repo`, Dockerhub: `docker.io/my-username/my-repo`.|
 
-  ```shell
-  kctrl package installed update -i kpack-dependencies \
-    -n kadras-packages \
-    --values-file values.yml
-  ```
+</details>
 
-## Other
+## 🛡️&nbsp; Security
 
-The recommended way of installing the Kpack Dependencies package is via the [Kadras package repository](https://github.com/kadras-io/kadras-packages). If you prefer not using the repository, you can install the package by creating the necessary Carvel `PackageMetadata` and `Package` resources directly using [`kapp`](https://carvel.dev/kapp/docs/latest/install) or `kubectl`.
+The security process for reporting vulnerabilities is described in [SECURITY.md](SECURITY.md).
 
-  ```shell
-  kubectl create namespace kadras-packages
-  kapp deploy -a kpack-dependencies-package -n kadras-packages -y \
-    -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/metadata.yml \
-    -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/package.yml
-  ```
+## 🖊️&nbsp; License
 
-## Support and Documentation
+This project is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for more information.
 
-For support and documentation specific to kpack, check out [github.com/pivotal/kpack](https://github.com/pivotal/kpack).
+## 🙏&nbsp; Acknowledgments
 
-## References
-
-This package is based on the original kpack-dependencies package used in [Tanzu Community Edition](https://github.com/vmware-tanzu/community-edition) before its retirement.
-
-## Supply Chain Security
-
-This project is compliant with level 2 of the [SLSA Framework](https://slsa.dev).
-
-<img src="https://slsa.dev/images/SLSA-Badge-full-level2.svg" alt="The SLSA Level 2 badge" width=200>
+This package is inspired by the original kpack-dependencies package used in the [Tanzu Community Edition](https://github.com/vmware-tanzu/community-edition) project before its retirement.
