@@ -2,14 +2,17 @@ apiVersion: kpack.io/v1alpha2
 kind: Image
 metadata:
   name: test-image
-  namespace: carvel-test
+  namespace: tests
 spec:
   tag: ghcr.io/kadras-io/kpack-test-image
-  serviceAccountName: kadras-install-sa
   builder:
-    name: base
+    name: jammy-tiny
     kind: ClusterBuilder
   source:
     git:
-      url: https://github.com/spring-projects/spring-petclinic
-      revision: f48227aea0e4056e1b9105494ea2f6360f3975f3
+      url: https://github.com/ThomasVitale/band-service
+      revision: e327626f4d16e07594f7acb9a4251ff977165f7b
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"

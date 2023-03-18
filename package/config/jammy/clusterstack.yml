@@ -9,7 +9,7 @@ spec:
   buildImage:
     image: paketobuildpacks/build-jammy-tiny:0.1.49
   runImage:
-    image: paketobuildpacks/run-bionic-tiny:0.1.49
+    image: paketobuildpacks/build-jammy-tiny:0.1.49
 
 ---
 apiVersion: kpack.io/v1alpha2
@@ -21,4 +21,4 @@ spec:
   buildImage:
     image: paketobuildpacks/build-jammy-base:0.1.46
   runImage:
-    image: paketobuildpacks/run-bionic-base:0.1.46
+    image: paketobuildpacks/build-jammy-base:0.1.46

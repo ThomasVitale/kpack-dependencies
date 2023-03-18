@@ -8,7 +8,7 @@ spec:
   serviceAccountRef:
     name: kp-default-repository-serviceaccount
     namespace: kpack
-  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository, "default")
+  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository.name, "default")
   stack:
     name: bionic-base
     kind: ClusterStack
@@ -42,7 +42,7 @@ spec:
   serviceAccountRef:
     name: kp-default-repository-serviceaccount
     namespace: kpack
-  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository, "tiny")
+  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository.name, "bionic-tiny")
   stack:
     name: bionic-tiny
     kind: ClusterStack
@@ -68,7 +68,7 @@ spec:
   serviceAccountRef:
     name: kp-default-repository-serviceaccount
     namespace: kpack
-  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository, "base")
+  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository.name, "bionic-base")
   stack:
     name: bionic-base
     kind: ClusterStack

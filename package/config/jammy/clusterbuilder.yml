@@ -8,7 +8,7 @@ spec:
   serviceAccountRef:
     name: kp-default-repository-serviceaccount
     namespace: kpack
-  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository, "tiny")
+  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository.name, "jammy-tiny")
   stack:
     name: jammy-tiny
     kind: ClusterStack
@@ -34,7 +34,7 @@ spec:
   serviceAccountRef:
     name: kp-default-repository-serviceaccount
     namespace: kpack
-  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository, "base")
+  tag: #@ "{}:clusterbuilder-{}".format(data.values.kp_default_repository.name, "jammy-base")
   stack:
     name: jammy-base
     kind: ClusterStack
