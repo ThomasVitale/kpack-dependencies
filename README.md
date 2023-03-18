@@ -42,7 +42,7 @@ Add the Kadras [package repository](https://github.com/kadras-io/kadras-packages
 The recommended way of installing the kpack-dependencies package is via the Kadras <a href="https://github.com/kadras-io/kadras-packages">package repository</a>. If you prefer not using the repository, you can add the package definition directly using <a href="https://carvel.dev/kapp/docs/latest/install"><code>kapp</code></a> or <code>kubectl</code>.
 
   ```shell
-  kubectl create namespace kpack
+  kubectl create namespace kadras-packages
   kapp deploy -a kpack-package -n kadras-packages -y \
     -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/metadata.yml \
     -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/package.yml
