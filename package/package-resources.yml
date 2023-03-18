@@ -4,7 +4,11 @@ metadata:
   creationTimestamp: null
   name: kpack-dependencies.packages.kadras.io.0.0.0
 spec:
+  capacityRequirementsDescription: Container registry with > 1GB available space
+  licenses:
+  - Apache 2.0
   refName: kpack-dependencies.packages.kadras.io
+  releaseNotes: https://github.com/kadras-io/kpack-dependencies/releases
   releasedAt: null
   template:
     spec:
@@ -18,14 +22,7 @@ spec:
           - config
       - kbld: {}
   valuesSchema:
-    openAPIv3:
-      additionalProperties: false
-      properties:
-        kp_default_repository:
-          default: ""
-          description: The OCI registry where to publish builder images. The same
-            as configured in kpack.
-          type: string
+    openAPIv3: {}
   version: 0.0.0
 
 ---
@@ -45,6 +42,8 @@ spec:
   - name: Thomas Vitale
   providerName: Kadras
   shortDescription: A set of buildpacks, stacks, and builders to use with kpack.
+  supportDescription: Go to https://kadras.io for documentation and https://github.com/kadras-io/kpack-dependencies
+    for community support.
 
 ---
 apiVersion: packaging.carvel.dev/v1alpha1
