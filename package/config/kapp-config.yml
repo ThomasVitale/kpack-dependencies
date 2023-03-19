@@ -14,8 +14,5 @@ waitRules:
     - type: Ready
       status: "True"
       success: true
-    - type: Ready
-      status: "False"
-      failure: true
   resourceMatchers:
     - apiVersionKindMatcher: { apiVersion: kpack.io/v1alpha2, kind: ClusterBuilder }
