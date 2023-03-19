@@ -3,18 +3,6 @@
 apiVersion: kpack.io/v1alpha2
 kind: ClusterStack
 metadata:
-  name: default
-spec:
-  id: "io.paketo.stacks.tiny"
-  buildImage:
-    image: paketobuildpacks/build-bionic-tiny:1.3.99
-  runImage:
-    image: paketobuildpacks/run-bionic-tiny:1.3.99
-
----
-apiVersion: kpack.io/v1alpha2
-kind: ClusterStack
-metadata:
   name: bionic-tiny
 spec:
   id: "io.paketo.stacks.tiny"
