@@ -43,7 +43,7 @@ The recommended way of installing the kpack-dependencies package is via the Kadr
 
   ```shell
   kubectl create namespace kadras-packages
-  kapp deploy -a kpack-package -n kadras-packages -y \
+  kapp deploy -a kpack-dependencies-package -n kadras-packages -y \
     -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/metadata.yml \
     -f https://github.com/kadras-io/kpack-dependencies/releases/latest/download/package.yml
   ```
