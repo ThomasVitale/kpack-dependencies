@@ -6,6 +6,9 @@
 [![The Apache 2.0 license badge](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Follow us on Twitter](https://img.shields.io/static/v1?label=Twitter&message=Follow&color=1DA1F2)](https://twitter.com/kadrasIO)
 
+> **Warning**
+> This package has been replaced by [buildpacks-catalog](https://github.com/kadras-io/buildpacks-catalog).
+
 A Carvel package providing a set of buildpacks, stacks, and builders to use with [kpack](https://github.com/kadras-io/package-for-kpack), a Kubernetes-native implementation of [Cloud Native Buildpacks](https://buildpacks.io) to build application source code into OCI images.
 
 This package relies on the [Paketo Buildpacks](https://paketo.io) implementation, which provide support for multiple languages and frameworks, including Java, Spring, GraalVM, Go, Python, NodeJs, and more.
